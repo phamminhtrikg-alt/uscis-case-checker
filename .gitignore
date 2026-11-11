@@ -2,3 +2,4 @@ node_modules/
 .uscis-browser-profile/
 .case-results/
 *.log
+.yookoo-r9-secretary-preview/.wrangler/
