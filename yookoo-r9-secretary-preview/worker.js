@@ -743,7 +743,7 @@ async function authorize(request,env){
   if(request.method==='POST')try{form=await request.clone().formData();}catch{}
   const get=(name)=>p.get(name)||String(form?.get(name)||'');
   const params={client_id:get('client_id'),redirect_uri:get('redirect_uri'),response_type:get('response_type'),state:get('state'),code_challenge:get('code_challenge'),scope:get('scope')||MCP_SCOPE};
-  if(request.method==='GET'){
+  if(request.method==='GET'&&env.MCP_AUTH_MODE!=='preview-open'){
     return new Response('<!doctype html><meta charset="utf-8"><title>YOOKOO MCP authorization</title><h1>Authorize YOOKOO MCP preview</h1><p>Nhập MCP_ADMIN_SECRET đã cấu hình trong Cloudflare để cấp quyền cho phiên ChatGPT này.</p><form method="post">'+Object.entries(params).map(([k,v])=>'<input type="hidden" name="'+html(k)+'" value="'+html(v)+'">').join('')+'<label>MCP_ADMIN_SECRET <input name="admin_secret" type="password" autocomplete="off" required></label><button type="submit">Authorize</button></form>',{headers:{'Content-Type':'text/html; charset=utf-8','Cache-Control':'no-store'}});
   }
   if(env.MCP_AUTH_MODE!=='preview-open'){
