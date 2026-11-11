@@ -1,0 +1,4 @@
+node_modules/
+.uscis-browser-profile/
+.case-results/
+*.log

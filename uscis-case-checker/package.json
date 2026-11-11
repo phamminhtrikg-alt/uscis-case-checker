@@ -1,0 +1,8 @@
+{
+  "name": "uscis-case-checker",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": { "case": "node scripts/uscis-case-check.mjs", "check": "node --check scripts/uscis-case-check.mjs" },
+  "dependencies": { "playwright": "^1.65.0" }
+}

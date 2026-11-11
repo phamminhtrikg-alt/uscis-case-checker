@@ -1,0 +1,25 @@
+name: Run USCIS case check on my computer
+
+on:
+  workflow_dispatch:
+    inputs:
+      receipt:
+        description: Receipt number, for example IOE8434753880
+        required: true
+        type: string
+
+jobs:
+  case-check:
+    # This must be a self-hosted runner on your own Windows computer.
+    # A GitHub-hosted runner does not have your browser session and is commonly blocked by USCIS.
+    runs-on: [self-hosted, windows]
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci
+      - run: npm run case -- --receipt "${{ inputs.receipt }}"
+
+
