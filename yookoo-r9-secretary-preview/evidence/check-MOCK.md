@@ -1,6 +1,6 @@
 # MÔ PHỎNG /check — không gửi Telegram thật
 
-☀️ YOOKOO | 15:58:59 11/11/2026 (VN)
+☀️ YOOKOO | 16:21:03 11/11/2026 (VN)
 
 ✈️ F4 11/2026
 Ngày ưu tiên: 03/04/2014

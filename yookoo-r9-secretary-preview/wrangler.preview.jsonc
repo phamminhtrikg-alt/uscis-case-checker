@@ -1,12 +1,18 @@
 {
-  "name": "yookoo-daily-bot",
+  "name": "yookoo-daily-mcp-preview",
   "main": "worker.js",
   "compatibility_date": "2026-11-01",
-  "vars": {"SECRETARY_MODE":"preview","SECRETARY_REMINDERS":"false","GOOGLE_WRITE_ENABLED":"false"},
+  "vars": {"SECRETARY_MODE":"preview","SECRETARY_REMINDERS":"false","GOOGLE_WRITE_ENABLED":"false","MCP_AUTH_MODE":"preview-open"},
   "durable_objects": {"bindings":[{"name":"SECRETARY_COORDINATOR","class_name":"SecretaryCoordinator"}]},
   "migrations": [{"tag":"secretary-v1","new_sqlite_classes":["SecretaryCoordinator"]}],
-  "triggers": {"crons":[]}
-  // Add the EXISTING YOOKOO_KV namespace id from the dashboard before live configuration.
-  // Never deploy this preview configuration over production: it intentionally has no cron.
-  // After approval, replace old cron with ["* * * * *"].
+  "triggers": {"crons": []},
+  "d1_databases": [{
+    "binding": "YOOKOO_DB",
+    "database_name": "yookoo_daily_mcp_preview",
+    "database_id": "598a3254-b19c-4236-8335-c8bcb4d09705",
+    "migrations_dir": "migrations"
+  }]
+  // No production KV, Telegram secrets, or cron are configured here.
+  // Keep this preview separate from yookoo-daily-bot production.
 }
+

@@ -3,6 +3,7 @@ import {Journal,once} from './store.js';
 import {processText,calendarContext} from './engine.js';
 import {Calendar} from './calendar.js';
 import {local,due,report,localReminders} from './model.js';
+import {mcpFetch} from './mcp.js';
 const OLD_COMMANDS=new Set(['/test','/check','/detail','/f4','/case','/road','/news','/health']);
 async function secret(token){const hash=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(token));return Array.from(new Uint8Array(hash)).map(x=>x.toString(16).padStart(2,'0')).join('');}
 async function sendText(env,text){const ids=[];while(text.length){let end=Math.min(3800,text.length);if(end<text.length){const n=text.lastIndexOf('\n',end-1);if(n>0)end=n+1;}const part=text.slice(0,end);text=text.slice(end);const r=await fetch(`https://api.telegram.org/bot${env.TELEGRAM_BOT_TOKEN}/sendMessage`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:env.TELEGRAM_CHAT_ID,text:part,disable_web_page_preview:true}),signal:AbortSignal.timeout(15000)});if(!r.ok)throw Error('TELEGRAM_FAILED');const d=await r.json();if(!d.ok)throw Error('TELEGRAM_FAILED');ids.push(d.result?.message_id||null);}return ids;}
@@ -44,6 +45,7 @@ export class SecretaryCoordinator {
 export default {
  async fetch(request,env){
   const url=new URL(request.url);
+  const mcpResponse=await mcpFetch(request,env);if(mcpResponse)return mcpResponse;
   if(url.pathname==='/'&&request.method==='GET')return new Response('YOOKOO R9-SECRETARY · '+(env.SECRETARY_MODE==='live'?'live':'preview'));
   if(url.pathname!=='/telegram'||request.method!=='POST')return new Response('Not found',{status:404});
   if(!env.TELEGRAM_BOT_TOKEN||!env.TELEGRAM_CHAT_ID)return new Response('Missing configuration',{status:503});
