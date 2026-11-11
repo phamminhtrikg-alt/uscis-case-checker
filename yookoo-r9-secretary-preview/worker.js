@@ -727,7 +727,7 @@ async function validBearer(request,env){
   if(!token||!env.YOOKOO_DB)return false;
   try{const row=await env.YOOKOO_DB.prepare('SELECT access_token,expires_at FROM oauth_tokens WHERE access_token=?1').bind(token).first();return !!row&&Number(row.expires_at)>Date.now();}catch{return false;}
 }
-function protectedMeta(request){const base=baseUrl(request);return {resource:base+'/mcp',authorization_servers:[base],scopes_supported:MCP_SCOPE.split(' '),bearer_methods_supported:['header']};}
+function protectedMeta(request,env){const base=baseUrl(request);const value={resource:base+'/mcp'};if(env.MCP_AUTH_MODE!=='preview-open')Object.assign(value,{authorization_servers:[base],scopes_supported:MCP_SCOPE.split(' '),bearer_methods_supported:['header']});return value;}
 function authMeta(request){const base=baseUrl(request);return {issuer:base,authorization_endpoint:base+'/oauth/authorize',token_endpoint:base+'/oauth/token',registration_endpoint:base+'/oauth/register',scopes_supported:MCP_SCOPE.split(' '),response_types_supported:['code'],grant_types_supported:['authorization_code'],code_challenge_methods_supported:['S256'],token_endpoint_auth_methods_supported:['none','client_secret_post']};}
 async function registerClient(request,env){
   let body={};try{body=await request.json();}catch{return mcpJson({error:'invalid_client_metadata'},400);}
@@ -791,7 +791,7 @@ async function mcp(request,env){
 }
 async function mcpFetch(request,env){
   const u=new URL(request.url);
-  if(u.pathname==='/.well-known/oauth-protected-resource'&&request.method==='GET')return mcpJson(protectedMeta(request));
+  if(u.pathname==='/.well-known/oauth-protected-resource'&&request.method==='GET')return mcpJson(protectedMeta(request,env));
   if(u.pathname==='/.well-known/oauth-authorization-server'&&request.method==='GET')return mcpJson(authMeta(request));
   if(u.pathname==='/oauth/register'&&request.method==='POST')return registerClient(request,env);
   if(u.pathname==='/oauth/authorize'&&(request.method==='GET'||request.method==='POST'))return authorize(request,env);
