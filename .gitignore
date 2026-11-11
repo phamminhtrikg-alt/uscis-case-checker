@@ -3,3 +3,4 @@ node_modules/
 .case-results/
 *.log
 .yookoo-r9-secretary-preview/.wrangler/
+yookoo-r9-secretary-preview/.wrangler/
