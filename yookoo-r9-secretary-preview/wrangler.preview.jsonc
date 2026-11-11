@@ -1,0 +1,12 @@
+{
+  "name": "yookoo-daily-bot",
+  "main": "worker.js",
+  "compatibility_date": "2026-11-01",
+  "vars": {"SECRETARY_MODE":"preview","SECRETARY_REMINDERS":"false","GOOGLE_WRITE_ENABLED":"false"},
+  "durable_objects": {"bindings":[{"name":"SECRETARY_COORDINATOR","class_name":"SecretaryCoordinator"}]},
+  "migrations": [{"tag":"secretary-v1","new_sqlite_classes":["SecretaryCoordinator"]}],
+  "triggers": {"crons":[]}
+  // Add the EXISTING YOOKOO_KV namespace id from the dashboard before live configuration.
+  // Never deploy this preview configuration over production: it intentionally has no cron.
+  // After approval, replace old cron with ["* * * * *"].
+}

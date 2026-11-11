@@ -1,0 +1,1 @@
+Browser visual test blocked: Chromium could not create socket in execution environment (Operation not permitted). No screenshots produced. DOM interactions tested separately.

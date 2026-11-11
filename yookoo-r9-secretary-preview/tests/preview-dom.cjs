@@ -1,0 +1,8 @@
+const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');const {JSDOM}=require('jsdom');
+(async()=>{const html=fs.readFileSync(path.resolve(__dirname,'../preview/YOOKOO_PREVIEW.html'),'utf8');const dom=new JSDOM(html,{runScripts:'outside-only',url:'https://preview.local/'});const w=dom.window;w.structuredClone=structuredClone;w.TextEncoder=TextEncoder;w.fetch=()=>{throw Error('Preview must remain offline')};const code=w.document.querySelector('script[type="module"]').textContent;await w.eval('(async()=>{'+code+'})()');assert.equal(w.document.querySelectorAll('.task').length,18);
+ const click=text=>[...w.document.querySelectorAll('button')].find(b=>b.textContent===text).click();
+ const until=async fn=>{for(let i=0;i<100;i++){if(fn())return;await new Promise(r=>setTimeout(r,5));}throw Error('UI timeout');};
+ click('Đã xong cống Km3+665');await until(()=>w.document.querySelector('#confirm').children.length===2);click('Xác nhận');await until(()=>w.document.querySelector('#revision').textContent.includes('1 cập nhật'));
+ const rows=[...w.document.querySelectorAll('.task')];assert.ok(rows.find(x=>x.textContent.includes('W09.KM3_665')).textContent.includes('Hoàn thành xác nhận'));assert.ok(rows.find(x=>x.textContent.includes('W09.KM4_385')).textContent.includes('Đang làm'));
+ click('21:45');await until(()=>w.document.querySelector('#report').textContent.includes('Hôm nay đã học tiếng Anh chưa'));
+ assert.equal(w.document.querySelectorAll('script[src],link[href]').length,0);w.close();console.log('PASS DOM preview: offline script, 18 tasks, scoped confirm changes one culvert, evening report selector. Visual browser rendering NOT verified (OS socket restriction).');})().catch(e=>{console.error(e);process.exit(1)});

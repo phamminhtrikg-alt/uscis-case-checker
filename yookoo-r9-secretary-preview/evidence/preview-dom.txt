@@ -1,0 +1,1 @@
+PASS DOM preview: offline script, 18 tasks, scoped confirm changes one culvert, evening report selector. Visual browser rendering NOT verified (OS socket restriction).

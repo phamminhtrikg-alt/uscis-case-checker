@@ -1,0 +1,3 @@
+workerd/server/server/run.rs:630: debug: [ TEST ] tests
+PASS actual Durable Object storage + KV adapter, concurrent retry, confirmation, legacy /check with road, calendar offline
+workerd/server/server/run.rs:637: debug: [ PASS ] tests (44.181449ms)

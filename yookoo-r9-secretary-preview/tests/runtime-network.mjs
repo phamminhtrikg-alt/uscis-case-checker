@@ -1,0 +1,3 @@
+import data from './fixture.json';
+let count=0,confirmed=false,road=false;
+export default {async fetch(req){const u=new URL(req.url);if(u.hostname==='controls.test')return Response.json({count,confirmed,road});if(u.hostname.endsWith('uscis.gov')||u.hostname==='api.openai.com'||u.hostname==='www.googleapis.com')throw Error('No live access allowed');if(u.hostname==='raw.githubusercontent.com')return Response.json(data);if(u.hostname==='api.telegram.org'){const b=await req.json();count++;confirmed ||= b.text.includes('Đã ghi nhận confirm-p2');road ||= b.text.includes('ĐƯỜNG VÀNH ĐAI');if(b.text.length>4096)throw Error('Telegram too long');return Response.json({ok:true,result:{message_id:count}});}return new Response('<rss><channel></channel></rss>');}};

@@ -1,0 +1,307 @@
+TAP version 13
+# Subtest: existing recurring instance is patched with etag, not master; replay never writes twice
+ok 1 - existing recurring instance is patched with etag, not master; replay never writes twice
+  ---
+  duration_ms: 16.939541
+  type: 'test'
+  ...
+# Subtest: changed event etag refuses to overwrite user edits
+ok 2 - changed event etag refuses to overwrite user edits
+  ---
+  duration_ms: 2.170077
+  type: 'test'
+  ...
+# Subtest: create retries stable valid id, reads before writes, uses same calendar
+ok 3 - create retries stable valid id, reads before writes, uses same calendar
+  ---
+  duration_ms: 18.051906
+  type: 'test'
+  ...
+# Subtest: manual identical event introduced after preview is not duplicated
+ok 4 - manual identical event introduced after preview is not duplicated
+  ---
+  duration_ms: 2.834071
+  type: 'test'
+  ...
+# Subtest: audit uses all existing IDs, never creates old events or claims missing events synced
+ok 5 - audit uses all existing IDs, never creates old events or claims missing events synced
+  ---
+  duration_ms: 3.140939
+  type: 'test'
+  ...
+# Subtest: write permission is explicit, no OAuth or write without configuration
+ok 6 - write permission is explicit, no OAuth or write without configuration
+  ---
+  duration_ms: 0.651656
+  type: 'test'
+  ...
+# Subtest: Google list paginates all events
+ok 7 - Google list paginates all events
+  ---
+  duration_ms: 1.132439
+  type: 'test'
+  ...
+# Subtest: /case never requests USCIS even with old API secrets
+ok 8 - /case never requests USCIS even with old API secrets
+  ---
+  duration_ms: 30.637028
+  type: 'test'
+  ...
+# Subtest: /check never requests USCIS even with old API secrets
+ok 9 - /check never requests USCIS even with old API secrets
+  ---
+  duration_ms: 30.736062
+  type: 'test'
+  ...
+# Subtest: /CHECK never requests USCIS even with old API secrets
+ok 10 - /CHECK never requests USCIS even with old API secrets
+  ---
+  duration_ms: 114.336369
+  type: 'test'
+  ...
+# Subtest: /detail never requests USCIS even with old API secrets
+ok 11 - /detail never requests USCIS even with old API secrets
+  ---
+  duration_ms: 7.853065
+  type: 'test'
+  ...
+# Subtest: /health never requests USCIS even with old API secrets
+ok 12 - /health never requests USCIS even with old API secrets
+  ---
+  duration_ms: 3.955661
+  type: 'test'
+  ...
+# Subtest: /road never requests USCIS even with old API secrets
+ok 13 - /road never requests USCIS even with old API secrets
+  ---
+  duration_ms: 2.543907
+  type: 'test'
+  ...
+# YOOKOO daily message delivered
+# Subtest: /news never requests USCIS even with old API secrets
+ok 14 - /news never requests USCIS even with old API secrets
+  ---
+  duration_ms: 3.117332
+  type: 'test'
+  ...
+# Subtest: CRON never requests USCIS even with old API secrets
+ok 15 - CRON never requests USCIS even with old API secrets
+  ---
+  duration_ms: 3.476699
+  type: 'test'
+  ...
+# Subtest: road report retains baseline and explicit source failure when RSS down
+ok 16 - road report retains baseline and explicit source failure when RSS down
+  ---
+  duration_ms: 0.276942
+  type: 'test'
+  ...
+# Subtest: road report displays discovered relevant article
+ok 17 - road report displays discovered relevant article
+  ---
+  duration_ms: 0.272419
+  type: 'test'
+  ...
+# Subtest: long road message is delivered completely across Telegram limits
+ok 18 - long road message is delivered completely across Telegram limits
+  ---
+  duration_ms: 0.512882
+  type: 'test'
+  ...
+# Subtest: priority corrected to April 3, exact UTC day gaps and strict equality
+ok 19 - priority corrected to April 3, exact UTC day gaps and strict equality
+  ---
+  duration_ms: 0.203736
+  type: 'test'
+  ...
+# Subtest: December bulletin is detected in November immediately, with future applicability label
+ok 20 - December bulletin is detected in November immediately, with future applicability label
+  ---
+  duration_ms: 1.084509
+  type: 'test'
+  ...
+# Subtest: far-future malformed publisher month rejected and year rollover supported
+ok 21 - far-future malformed publisher month rejected and year rollover supported
+  ---
+  duration_ms: 0.736591
+  type: 'test'
+  ...
+# Subtest: health/source snapshot writes never consume the new-month notice
+ok 22 - health/source snapshot writes never consume the new-month notice
+  ---
+  duration_ms: 0.778153
+  type: 'test'
+  ...
+# Subtest: new bulletin alert saved only after Telegram acknowledges; next report not repeatedly special
+ok 23 - new bulletin alert saved only after Telegram acknowledges; next report not repeatedly special
+  ---
+  duration_ms: 0.60835
+  type: 'test'
+  ...
+# Subtest: Telegram 500 preserves pending new bulletin alert
+ok 24 - Telegram 500 preserves pending new bulletin alert
+  ---
+  duration_ms: 0.511541
+  type: 'test'
+  ...
+# Subtest: same-month correction and retrogression are announced as revision
+ok 25 - same-month correction and retrogression are announced as revision
+  ---
+  duration_ms: 0.246944
+  type: 'test'
+  ...
+# Subtest: old/cached data never raises a new bulletin alarm
+ok 26 - old/cached data never raises a new bulletin alarm
+  ---
+  duration_ms: 0.119669
+  type: 'test'
+  ...
+# Subtest: December demonstration explicitly labelled hypothetical
+ok 27 - December demonstration explicitly labelled hypothetical
+  ---
+  duration_ms: 0.439502
+  type: 'test'
+  ...
+# Subtest: seed: nine groups, five not started, independent scopes, BR ownership and NSH
+ok 28 - seed: nine groups, five not started, independent scopes, BR ownership and NSH
+  ---
+  duration_ms: 3.855623
+  type: 'test'
+  ...
+# Subtest: migration is idempotent and preserves legacy KV
+ok 29 - migration is idempotent and preserves legacy KV
+  ---
+  duration_ms: 1.505672
+  type: 'test'
+  ...
+# Subtest: natural scoped update: Đã xong KCS lún MC 4100–4800, gửi TVGS
+ok 30 - natural scoped update: Đã xong KCS lún MC 4100–4800, gửi TVGS
+  ---
+  duration_ms: 3.473225
+  type: 'test'
+  ...
+# Subtest: natural scoped update: Đã xong cống Km3+665
+ok 31 - natural scoped update: Đã xong cống Km3+665
+  ---
+  duration_ms: 1.563895
+  type: 'test'
+  ...
+# Subtest: natural scoped update: BR đã hoàn thành BV trạm cân
+ok 32 - natural scoped update: BR đã hoàn thành BV trạm cân
+  ---
+  duration_ms: 0.895998
+  type: 'test'
+  ...
+# Subtest: BR delivered distinct from completed and TVGS approved requires explicit wording
+ok 33 - BR delivered distinct from completed and TVGS approved requires explicit wording
+  ---
+  duration_ms: 1.038732
+  type: 'test'
+  ...
+# Subtest: ambiguous, negative, conditional, multiple ranges and parents do not auto-close
+ok 34 - ambiguous, negative, conditional, multiple ranges and parents do not auto-close
+  ---
+  duration_ms: 2.152965
+  type: 'test'
+  ...
+# Subtest: proposal, confirm, duplicate confirmation and undo use durable history
+ok 35 - proposal, confirm, duplicate confirmation and undo use durable history
+  ---
+  duration_ms: 5.217825
+  type: 'test'
+  ...
+# Subtest: stale proposals cannot overwrite later user update
+ok 36 - stale proposals cannot overwrite later user update
+  ---
+  duration_ms: 5.428884
+  type: 'test'
+  ...
+# Subtest: trip exception does not mark work done or actually returned
+ok 37 - trip exception does not mark work done or actually returned
+  ---
+  duration_ms: 2.371688
+  type: 'test'
+  ...
+# Subtest: English exception only affects yesterday, recurring ids kept
+ok 38 - English exception only affects yesterday, recurring ids kept
+  ---
+  duration_ms: 1.344041
+  type: 'test'
+  ...
+# Subtest: all five slots Mon-Sat, Sunday evening only, exact Vietnam clock
+ok 39 - all five slots Mon-Sat, Sunday evening only, exact Vietnam clock
+  ---
+  duration_ms: 0.385947
+  type: 'test'
+  ...
+# Subtest: Saturday driving timing and conditional Nov10 retained, no historical alarm replay
+ok 40 - Saturday driving timing and conditional Nov10 retained, no historical alarm replay
+  ---
+  duration_ms: 0.779
+  type: 'test'
+  ...
+# Subtest: no credentials: read-only references, no false sync or AI claims
+ok 41 - no credentials: read-only references, no false sync or AI claims
+  ---
+  duration_ms: 2.660864
+  type: 'test'
+  ...
+# Subtest: durable pending intent replays after KV write failure exactly once
+ok 42 - durable pending intent replays after KV write failure exactly once
+  ---
+  duration_ms: 2.002763
+  type: 'test'
+  ...
+# Subtest: acknowledged delivery retry once; ambiguous transport failure never silently duplicates
+ok 43 - acknowledged delivery retry once; ambiguous transport failure never silently duplicates
+  ---
+  duration_ms: 1.046544
+  type: 'test'
+  ...
+# YOOKOO daily message delivered
+# YOOKOO daily message delivered
+# Subtest: Telegram auth rejects forged token and wrong sender, preview writes nothing
+ok 44 - Telegram auth rejects forged token and wrong sender, preview writes nothing
+  ---
+  duration_ms: 26.225788
+  type: 'test'
+  ...
+# Subtest: coordinator serializes duplicate concurrent webhooks and user confirmations
+ok 45 - coordinator serializes duplicate concurrent webhooks and user confirmations
+  ---
+  duration_ms: 6.05746
+  type: 'test'
+  ...
+# Subtest: API dialogue passes stored context, no credentials in prompt, structured output validates
+ok 46 - API dialogue passes stored context, no credentials in prompt, structured output validates
+  ---
+  duration_ms: 1.790272
+  type: 'test'
+  ...
+# Subtest: scheduler handles retry per local date/slot; legacy 08:30 still daily, secretary excludes Sunday
+ok 47 - scheduler handles retry per local date/slot; legacy 08:30 still daily, secretary excludes Sunday
+  ---
+  duration_ms: 38.682451
+  type: 'test'
+  ...
+# Subtest: new personal task persists after confirmation, stays out of administrative priority list
+ok 48 - new personal task persists after confirmation, stays out of administrative priority list
+  ---
+  duration_ms: 1.317647
+  type: 'test'
+  ...
+# Subtest: offline appointments are explicitly bot-only, confirmed and deduplicated
+ok 49 - offline appointments are explicitly bot-only, confirmed and deduplicated
+  ---
+  duration_ms: 1.84053
+  type: 'test'
+  ...
+1..49
+# tests 49
+# suites 0
+# pass 49
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 419.530883
