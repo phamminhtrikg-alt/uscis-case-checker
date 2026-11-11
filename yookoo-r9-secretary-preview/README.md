@@ -51,3 +51,14 @@ Nguồn kỹ thuật đã đối chiếu:
 - https://developers.openai.com/api/reference/resources/responses/methods/create
 - https://developers.google.com/workspace/calendar/api/guides/create-events
 - https://developers.google.com/workspace/calendar/api/guides/recurringevents
+
+## MCP preview hiện tại
+
+Worker preview: https://yookoo-daily-mcp-preview.phamminhtrikg.workers.dev
+
+- MCP endpoint: `/mcp`
+- Resource metadata: `/.well-known/oauth-protected-resource`
+- Authorization metadata: `/.well-known/oauth-authorization-server`
+- Preview đang mở để kiểm tra kết nối nhưng chỉ cho đọc; cập nhật tiến độ và gửi Telegram luôn bị từ chối.
+- USCIS chỉ là bản ghi thủ công; preview không truy cập USCIS online.
+- Production vẫn giữ OAuth đầy đủ và không dùng biến `MCP_AUTH_MODE=preview-open`.
